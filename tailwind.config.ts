@@ -48,6 +48,7 @@ const config: Config = {
         'float': 'float 3s ease-in-out infinite',
         'chaos': 'chaos 5s linear infinite',
         'shadow-dance': 'shadowDance 3s ease-in-out infinite',
+        'shadow-glitch': 'shadowGlitch 2s infinite',
       },
       keyframes: {
         glitch: {
@@ -76,6 +77,32 @@ const config: Config = {
           '50%': { '--shadow-x': '4px', '--shadow-y': '12px' },
           '75%': { '--shadow-x': '12px', '--shadow-y': '12px' },
           '100%': { '--shadow-x': '8px', '--shadow-y': '8px' },
+        },
+        shadowGlitch: {
+          '0%': { 
+            boxShadow: '8px 8px 0 0 #000',
+            transform: 'translate(0)'
+          },
+          '20%': { 
+            boxShadow: '12px 4px 0 0 #FF00FF',
+            transform: 'translate(-2px, 2px)'
+          },
+          '40%': { 
+            boxShadow: '4px 12px 0 0 #00FF00',
+            transform: 'translate(2px, -2px)'
+          },
+          '60%': { 
+            boxShadow: '12px 8px 0 0 #FF0000',
+            transform: 'translate(-1px, -1px)'
+          },
+          '80%': { 
+            boxShadow: '8px 12px 0 0 #FF00FF',
+            transform: 'translate(1px, 1px)'
+          },
+          '100%': { 
+            boxShadow: '8px 8px 0 0 #000',
+            transform: 'translate(0)'
+          }
         }
       },
     },

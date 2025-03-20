@@ -68,7 +68,16 @@ const links = [
 const BackgroundChaos = () => {
   return (
     <div className="fixed inset-0 opacity-20 overflow-hidden">
-      {/* Horizontal glitch lines */}
+      {/* Glitch background shadows */}
+      <div className="absolute inset-0 bg-gradient-to-br from-nihil-primary/20 to-nihil-secondary/20 animate-glitch-slow" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-nihil-accent/10 to-transparent animate-glitch-fast" 
+        style={{ animationDelay: '0.2s' }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-bl from-nihil-dark/15 to-nihil-light/15 animate-glitch" 
+        style={{ animationDelay: '0.4s' }}
+      />
+
+      {/* Horizontal glitch lines with shadow */}
       {[...Array(15)].map((_, i) => (
         <div
           key={`h-${i}`}
@@ -77,14 +86,16 @@ const BackgroundChaos = () => {
             top: `${Math.random() * 100}%`,
             left: 0,
             width: '100%',
-            height: '1px',
+            height: '2px',
             background: i % 3 === 0 ? '#FF00FF' : i % 3 === 1 ? '#00FF00' : '#FF0000',
             opacity: Math.random() * 0.5 + 0.5,
+            boxShadow: `0 0 ${10 + Math.random() * 20}px ${i % 3 === 0 ? '#FF00FF' : i % 3 === 1 ? '#00FF00' : '#FF0000'}`,
+            filter: 'blur(1px)',
           }}
         />
       ))}
 
-      {/* Diagonal chaos elements */}
+      {/* Diagonal chaos elements with glitch shadow */}
       {[...Array(10)].map((_, i) => (
         <div
           key={`d-${i}`}
@@ -93,14 +104,16 @@ const BackgroundChaos = () => {
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
             width: '150px',
-            height: '2px',
+            height: '3px',
             background: i % 2 ? '#FF00FF' : '#00FF00',
             transform: `rotate(${Math.random() * 360}deg)`,
+            boxShadow: `0 0 ${15 + Math.random() * 25}px ${i % 2 ? '#FF00FF' : '#00FF00'}`,
+            filter: 'blur(0.5px)',
           }}
         />
       ))}
 
-      {/* Floating squares */}
+      {/* Floating squares with glitch effect */}
       {[...Array(8)].map((_, i) => (
         <div
           key={`s-${i}`}
@@ -114,11 +127,13 @@ const BackgroundChaos = () => {
             borderColor: i % 3 === 0 ? '#FF00FF' : i % 3 === 1 ? '#00FF00' : '#FF0000',
             transform: `rotate(${Math.random() * 45}deg)`,
             animationDelay: `${i * 0.5}s`,
+            boxShadow: `0 0 ${20 + Math.random() * 30}px ${i % 3 === 0 ? '#FF00FF' : i % 3 === 1 ? '#00FF00' : '#FF0000'}`,
+            filter: 'blur(1px)',
           }}
         />
       ))}
 
-      {/* Random glitch dots */}
+      {/* Random glitch dots with enhanced glow */}
       {[...Array(20)].map((_, i) => (
         <div
           key={`g-${i}`}
@@ -129,7 +144,8 @@ const BackgroundChaos = () => {
             width: '4px',
             height: '4px',
             background: i % 2 ? '#FF00FF' : '#00FF00',
-            boxShadow: '0 0 8px currentColor',
+            boxShadow: `0 0 ${15 + Math.random() * 20}px ${i % 2 ? '#FF00FF' : '#00FF00'}`,
+            filter: 'blur(0.5px)',
           }}
         />
       ))}
@@ -177,9 +193,10 @@ export default function Home() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`block w-full p-4 sm:p-6 ${link.color} ${link.textColor} text-center font-black text-lg sm:text-xl tracking-widest border-2 sm:border-4 border-black shadow-nihil-animate animate-shadow-dance transition-all relative overflow-hidden`}
+              className={`block w-full p-4 sm:p-6 ${link.color} ${link.textColor} text-center font-black text-lg sm:text-xl tracking-widest border-2 sm:border-4 border-black animate-shadow-glitch transition-all relative overflow-hidden hover:animate-none`}
               style={{
-                animationDelay: `${link.delay}s`
+                animationDelay: `${link.delay}s`,
+                animationFillMode: 'both'
               }}
               initial={{ x: -100, opacity: 0, rotate: link.rotate }}
               animate={{ x: 0, opacity: 1, rotate: link.rotate }}
