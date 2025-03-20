@@ -1,112 +1,229 @@
+'use client'
+
+import { motion } from 'framer-motion'
 import Image from 'next/image'
+
+const SocialIcons = {
+  INSTAGRAM: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8 inline-block">
+      <path fill="currentColor" d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 1 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/>
+    </svg>
+  ),
+  X: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8 inline-block">
+      <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+    </svg>
+  ),
+  GITHUB: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8 inline-block">
+      <path fill="currentColor" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+    </svg>
+  ),
+  LINKEDIN: (
+    <svg viewBox="0 0 24 24" className="w-8 h-8 inline-block">
+      <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+    </svg>
+  ),
+}
+
+const links = [
+  {
+    title: 'INSTAGRAM',
+    url: 'https://instagram.com/yourusername',
+    color: 'bg-social-instagram',
+    textColor: 'text-white',
+    rotate: -2,
+    delay: 0,
+    icon: SocialIcons.INSTAGRAM
+  },
+  {
+    title: 'X',
+    url: 'https://x.com/yourusername',
+    color: 'bg-social-x',
+    textColor: 'text-white',
+    rotate: 1,
+    delay: 0.5,
+    icon: SocialIcons.X
+  },
+  {
+    title: 'GITHUB',
+    url: 'https://github.com/yourusername',
+    color: 'bg-social-github',
+    textColor: 'text-white',
+    rotate: -1,
+    delay: 1,
+    icon: SocialIcons.GITHUB
+  },
+  {
+    title: 'LINKEDIN',
+    url: 'https://linkedin.com/in/yourusername',
+    color: 'bg-social-linkedin',
+    textColor: 'text-white',
+    rotate: 2,
+    delay: 1.5,
+    icon: SocialIcons.LINKEDIN
+  },
+]
+
+const BackgroundChaos = () => {
+  return (
+    <div className="fixed inset-0 opacity-20 overflow-hidden">
+      {/* Horizontal glitch lines */}
+      {[...Array(15)].map((_, i) => (
+        <div
+          key={`h-${i}`}
+          className={`absolute animate-glitch-${i % 2 ? 'fast' : 'slow'}`}
+          style={{
+            top: `${Math.random() * 100}%`,
+            left: 0,
+            width: '100%',
+            height: '1px',
+            background: i % 3 === 0 ? '#FF00FF' : i % 3 === 1 ? '#00FF00' : '#FF0000',
+            opacity: Math.random() * 0.5 + 0.5,
+          }}
+        />
+      ))}
+
+      {/* Diagonal chaos elements */}
+      {[...Array(10)].map((_, i) => (
+        <div
+          key={`d-${i}`}
+          className="absolute animate-chaos"
+          style={{
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            width: '150px',
+            height: '2px',
+            background: i % 2 ? '#FF00FF' : '#00FF00',
+            transform: `rotate(${Math.random() * 360}deg)`,
+          }}
+        />
+      ))}
+
+      {/* Floating squares */}
+      {[...Array(8)].map((_, i) => (
+        <div
+          key={`s-${i}`}
+          className="absolute animate-float"
+          style={{
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            width: '30px',
+            height: '30px',
+            border: '2px solid',
+            borderColor: i % 3 === 0 ? '#FF00FF' : i % 3 === 1 ? '#00FF00' : '#FF0000',
+            transform: `rotate(${Math.random() * 45}deg)`,
+            animationDelay: `${i * 0.5}s`,
+          }}
+        />
+      ))}
+
+      {/* Random glitch dots */}
+      {[...Array(20)].map((_, i) => (
+        <div
+          key={`g-${i}`}
+          className="absolute animate-glitch-fast"
+          style={{
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            width: '4px',
+            height: '4px',
+            background: i % 2 ? '#FF00FF' : '#00FF00',
+            boxShadow: '0 0 8px currentColor',
+          }}
+        />
+      ))}
+    </div>
+  )
+}
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="min-h-screen bg-white p-8 relative overflow-hidden">
+      <BackgroundChaos />
+
+      <div className="max-w-2xl mx-auto relative">
+        <motion.div
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="text-center mb-16"
+        >
+          <motion.div
+            className="w-40 h-40 mx-auto mb-8 relative"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            <div className="absolute inset-0 bg-nihil-primary animate-glitch"></div>
+            <div className="relative w-full h-full border-4 border-black shadow-nihil">
+              <Image
+                src="/image/profile.webp"
+                alt="Profile"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </motion.div>
+          <h1 className="text-6xl font-black mb-4 animate-glitch tracking-tighter">
+            Rizki.tsx
+          </h1>
+          <p className="text-xl font-mono text-nihil-primary">@ezpzlemonsquizy</p>
+        </motion.div>
+
+        <div className="space-y-6">
+          {links.map((link, i) => (
+            <motion.a
+              key={i}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`block w-full p-6 ${link.color} ${link.textColor} text-center font-black text-xl tracking-widest border-4 border-black shadow-nihil-animate animate-shadow-dance transition-all relative overflow-hidden`}
+              style={{
+                animationDelay: `${link.delay}s`
+              }}
+              initial={{ x: -100, opacity: 0, rotate: link.rotate }}
+              animate={{ x: 0, opacity: 1, rotate: link.rotate }}
+              transition={{ 
+                delay: i * 0.15,
+                type: "spring",
+                stiffness: 200
+              }}
+              whileHover={{ 
+                scale: 1.02,
+                rotate: link.rotate * -1,
+                transition: { duration: 0.2 }
+              }}
+              whileTap={{ 
+                scale: 0.95,
+                rotate: link.rotate * 2
+              }}
+            >
+              <span className="relative z-10 flex items-center justify-center gap-4">
+                {link.icon}
+                <span className="hidden sm:inline">{link.title}</span>
+              </span>
+              <div 
+                className={`absolute inset-0 ${link.color} opacity-50 animate-glitch-fast`}
+                style={{ 
+                  clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+                  animationDelay: `${link.delay + 0.2}s`
+                }}
+              />
+            </motion.a>
+          ))}
         </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+        <motion.footer
+          className="mt-16 text-center font-mono"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
+          <p className="text-sm text-nihil-primary animate-pulse">
+            © 2025 <span className="text-nihil-accent">P-Word</span> {' // '}
+            <span className="text-nihil-secondary">404_REALITY_NOT_FOUND</span>
           </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        </motion.footer>
       </div>
     </main>
   )
