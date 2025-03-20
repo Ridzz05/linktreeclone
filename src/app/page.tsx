@@ -67,21 +67,31 @@ const links = [
 
 const BackgroundChaos = () => {
   return (
-    <div className="fixed inset-0 opacity-20 overflow-hidden">
+    <div className="fixed inset-0 opacity-20 overflow-hidden pointer-events-none select-none">
       {/* Glitch background shadows */}
-      <div className="absolute inset-0 bg-gradient-to-br from-nihil-primary/20 to-nihil-secondary/20 animate-glitch-slow" />
-      <div className="absolute inset-0 bg-gradient-to-tr from-nihil-accent/10 to-transparent animate-glitch-fast" 
-        style={{ animationDelay: '0.2s' }}
+      <div className="fixed inset-0 bg-gradient-to-br from-nihil-primary/20 to-nihil-secondary/20 animate-glitch-slow" 
+        style={{ transform: 'translateZ(0)' }}
       />
-      <div className="absolute inset-0 bg-gradient-to-bl from-nihil-dark/15 to-nihil-light/15 animate-glitch" 
-        style={{ animationDelay: '0.4s' }}
+      <div className="fixed inset-0 bg-gradient-to-tr from-nihil-accent/10 to-transparent animate-glitch-fast" 
+        style={{ 
+          animationDelay: '0.2s',
+          transform: 'translateZ(0)',
+          willChange: 'transform'
+        }}
+      />
+      <div className="fixed inset-0 bg-gradient-to-bl from-nihil-dark/15 to-nihil-light/15 animate-glitch" 
+        style={{ 
+          animationDelay: '0.4s',
+          transform: 'translateZ(0)',
+          willChange: 'transform'
+        }}
       />
 
       {/* Horizontal glitch lines with shadow */}
       {[...Array(15)].map((_, i) => (
         <div
           key={`h-${i}`}
-          className={`absolute animate-glitch-${i % 2 ? 'fast' : 'slow'}`}
+          className={`fixed animate-glitch-${i % 2 ? 'fast' : 'slow'}`}
           style={{
             top: `${Math.random() * 100}%`,
             left: 0,
@@ -91,6 +101,8 @@ const BackgroundChaos = () => {
             opacity: Math.random() * 0.5 + 0.5,
             boxShadow: `0 0 ${10 + Math.random() * 20}px ${i % 3 === 0 ? '#FF00FF' : i % 3 === 1 ? '#00FF00' : '#FF0000'}`,
             filter: 'blur(1px)',
+            transform: 'translateZ(0)',
+            willChange: 'transform'
           }}
         />
       ))}
@@ -99,16 +111,17 @@ const BackgroundChaos = () => {
       {[...Array(10)].map((_, i) => (
         <div
           key={`d-${i}`}
-          className="absolute animate-chaos"
+          className="fixed animate-chaos"
           style={{
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
             width: '150px',
             height: '3px',
             background: i % 2 ? '#FF00FF' : '#00FF00',
-            transform: `rotate(${Math.random() * 360}deg)`,
+            transform: `translateZ(0) rotate(${Math.random() * 360}deg)`,
             boxShadow: `0 0 ${15 + Math.random() * 25}px ${i % 2 ? '#FF00FF' : '#00FF00'}`,
             filter: 'blur(0.5px)',
+            willChange: 'transform'
           }}
         />
       ))}
@@ -117,7 +130,7 @@ const BackgroundChaos = () => {
       {[...Array(8)].map((_, i) => (
         <div
           key={`s-${i}`}
-          className="absolute animate-float"
+          className="fixed animate-float"
           style={{
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
@@ -125,10 +138,11 @@ const BackgroundChaos = () => {
             height: '30px',
             border: '2px solid',
             borderColor: i % 3 === 0 ? '#FF00FF' : i % 3 === 1 ? '#00FF00' : '#FF0000',
-            transform: `rotate(${Math.random() * 45}deg)`,
+            transform: `translateZ(0) rotate(${Math.random() * 45}deg)`,
             animationDelay: `${i * 0.5}s`,
             boxShadow: `0 0 ${20 + Math.random() * 30}px ${i % 3 === 0 ? '#FF00FF' : i % 3 === 1 ? '#00FF00' : '#FF0000'}`,
             filter: 'blur(1px)',
+            willChange: 'transform'
           }}
         />
       ))}
@@ -137,7 +151,7 @@ const BackgroundChaos = () => {
       {[...Array(20)].map((_, i) => (
         <div
           key={`g-${i}`}
-          className="absolute animate-glitch-fast"
+          className="fixed animate-glitch-fast"
           style={{
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
@@ -146,6 +160,8 @@ const BackgroundChaos = () => {
             background: i % 2 ? '#FF00FF' : '#00FF00',
             boxShadow: `0 0 ${15 + Math.random() * 20}px ${i % 2 ? '#FF00FF' : '#00FF00'}`,
             filter: 'blur(0.5px)',
+            transform: 'translateZ(0)',
+            willChange: 'transform'
           }}
         />
       ))}
@@ -155,7 +171,7 @@ const BackgroundChaos = () => {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white p-8 relative overflow-hidden">
+    <main className="min-h-screen bg-white p-8 relative overflow-x-hidden">
       <BackgroundChaos />
 
       <div className="max-w-2xl mx-auto relative">
