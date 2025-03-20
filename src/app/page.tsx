@@ -5,22 +5,22 @@ import Image from 'next/image'
 
 const SocialIcons = {
   INSTAGRAM: (
-    <svg viewBox="0 0 24 24" className="w-8 h-8 inline-block">
+    <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-8 sm:h-8 inline-block">
       <path fill="currentColor" d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 1 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/>
     </svg>
   ),
   X: (
-    <svg viewBox="0 0 24 24" className="w-8 h-8 inline-block">
+    <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-8 sm:h-8 inline-block">
       <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
     </svg>
   ),
   GITHUB: (
-    <svg viewBox="0 0 24 24" className="w-8 h-8 inline-block">
+    <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-8 sm:h-8 inline-block">
       <path fill="currentColor" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
     </svg>
   ),
   LINKEDIN: (
-    <svg viewBox="0 0 24 24" className="w-8 h-8 inline-block">
+    <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-8 sm:h-8 inline-block">
       <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
     </svg>
   ),
@@ -177,7 +177,7 @@ export default function Home() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`block w-full p-6 ${link.color} ${link.textColor} text-center font-black text-xl tracking-widest border-4 border-black shadow-nihil-animate animate-shadow-dance transition-all relative overflow-hidden`}
+              className={`block w-full p-4 sm:p-6 ${link.color} ${link.textColor} text-center font-black text-lg sm:text-xl tracking-widest border-2 sm:border-4 border-black shadow-nihil-animate animate-shadow-dance transition-all relative overflow-hidden`}
               style={{
                 animationDelay: `${link.delay}s`
               }}
@@ -198,9 +198,9 @@ export default function Home() {
                 rotate: link.rotate * 2
               }}
             >
-              <span className="relative z-10 flex items-center justify-center gap-4">
+              <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-4">
                 {link.icon}
-                <span className="hidden sm:inline">{link.title}</span>
+                <span className="text-base sm:text-xl">{link.title}</span>
               </span>
               <div 
                 className={`absolute inset-0 ${link.color} opacity-50 animate-glitch-fast`}
