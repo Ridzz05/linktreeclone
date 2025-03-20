@@ -193,10 +193,12 @@ export default function Home() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`block w-full p-4 sm:p-6 ${link.color} ${link.textColor} text-center font-black text-lg sm:text-xl tracking-widest border-2 sm:border-4 border-black animate-shadow-glitch transition-all relative overflow-hidden hover:animate-none`}
+              className={`block w-full p-4 sm:p-6 ${link.color} ${link.textColor} text-center font-black text-lg sm:text-xl tracking-widest border-2 sm:border-4 border-black animate-shadow-glitch transition-transform relative overflow-hidden hover:animate-none backdrop-blur-sm`}
               style={{
                 animationDelay: `${link.delay}s`,
-                animationFillMode: 'both'
+                animationDuration: '0.8s',
+                animationFillMode: 'both',
+                animationTimingFunction: 'steps(15, end)'
               }}
               initial={{ x: -100, opacity: 0, rotate: link.rotate }}
               animate={{ x: 0, opacity: 1, rotate: link.rotate }}
@@ -220,10 +222,25 @@ export default function Home() {
                 <span className="text-base sm:text-xl">{link.title}</span>
               </span>
               <div 
-                className={`absolute inset-0 ${link.color} opacity-50 animate-glitch-fast`}
+                className={`absolute inset-0 ${link.color} opacity-30 animate-glitch-fast mix-blend-hard-light`}
                 style={{ 
                   clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
-                  animationDelay: `${link.delay + 0.2}s`
+                  animationDelay: `${link.delay + 0.2}s`,
+                  filter: 'contrast(200%) brightness(150%) hue-rotate(45deg)',
+                  mixBlendMode: 'hard-light'
+                }}
+              />
+              <div 
+                className={`absolute inset-0 animate-glitch-slow mix-blend-overlay`}
+                style={{ 
+                  background: `repeating-linear-gradient(
+                    ${Math.random() * 360}deg,
+                    ${link.color} 0%,
+                    transparent 2px,
+                    ${link.color} 4px
+                  )`,
+                  opacity: 0.1,
+                  animationDelay: `${link.delay + 0.1}s`
                 }}
               />
             </motion.a>

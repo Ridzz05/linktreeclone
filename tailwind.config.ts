@@ -81,27 +81,47 @@ const config: Config = {
         shadowGlitch: {
           '0%': { 
             boxShadow: '8px 8px 0 0 #000',
-            transform: 'translate(0)'
+            transform: 'translate(0) scale(1) rotate(0deg)'
+          },
+          '10%': { 
+            boxShadow: '20px -15px 0 0 #FF00FF, -15px 10px 0 -5px #00FF00',
+            transform: 'translate(-4px, 2px) scale(1.02) rotate(1deg)'
           },
           '20%': { 
-            boxShadow: '12px 4px 0 0 #FF00FF',
-            transform: 'translate(-2px, 2px)'
+            boxShadow: '-18px 12px 0 0 #00FF00, 12px -8px 0 -5px #FF0000',
+            transform: 'translate(6px, -3px) scale(0.98) rotate(-2deg)'
+          },
+          '30%': { 
+            boxShadow: '15px -12px 0 0 #FF0000, -10px -10px 0 -5px #FF00FF',
+            transform: 'translate(-3px, -4px) skew(3deg) rotate(1deg)'
           },
           '40%': { 
-            boxShadow: '4px 12px 0 0 #00FF00',
-            transform: 'translate(2px, -2px)'
+            boxShadow: '-25px 15px 0 0 #FF00FF, 12px 12px 0 -5px #00FF00',
+            transform: 'translate(5px, 5px) scale(1.03) rotate(-3deg)'
+          },
+          '50%': { 
+            boxShadow: '16px 16px 0 0 #00FF00, -15px -15px 0 -5px #FF0000',
+            transform: 'translate(-5px, 0) skew(-3deg) rotate(2deg)'
           },
           '60%': { 
-            boxShadow: '12px 8px 0 0 #FF0000',
-            transform: 'translate(-1px, -1px)'
+            boxShadow: '-20px -20px 0 0 #FF0000, 10px 8px 0 -5px #FF00FF',
+            transform: 'translate(4px, -4px) scale(0.97) rotate(-1deg)'
+          },
+          '70%': { 
+            boxShadow: '18px -8px 0 0 #FF00FF, -12px 15px 0 -5px #00FF00',
+            transform: 'translate(-2px, 6px) skew(2deg) rotate(3deg)'
           },
           '80%': { 
-            boxShadow: '8px 12px 0 0 #FF00FF',
-            transform: 'translate(1px, 1px)'
+            boxShadow: '-8px -18px 0 0 #00FF00, 15px -12px 0 -5px #FF0000',
+            transform: 'translate(0, -6px) scale(1.01) rotate(-2deg)'
+          },
+          '90%': { 
+            boxShadow: '15px 12px 0 0 #FF0000, -18px 8px 0 -5px #FF00FF',
+            transform: 'translate(3px, 3px) skew(-2deg) rotate(1deg)'
           },
           '100%': { 
             boxShadow: '8px 8px 0 0 #000',
-            transform: 'translate(0)'
+            transform: 'translate(0) scale(1) rotate(0deg)'
           }
         }
       },
