@@ -87,8 +87,8 @@ const BackgroundChaos = () => {
         }}
       />
 
-      {/* Horizontal glitch lines with shadow */}
-      {[...Array(15)].map((_, i) => (
+      {/* Horizontal glitch lines with shadow - reduced count for mobile */}
+      {[...Array(window?.innerWidth < 768 ? 5 : 15)].map((_, i) => (
         <div
           key={`h-${i}`}
           className={`fixed animate-glitch-${i % 2 ? 'fast' : 'slow'}`}
@@ -99,7 +99,7 @@ const BackgroundChaos = () => {
             height: '2px',
             background: i % 3 === 0 ? '#FF00FF' : i % 3 === 1 ? '#00FF00' : '#FF0000',
             opacity: Math.random() * 0.5 + 0.5,
-            boxShadow: `0 0 ${10 + Math.random() * 20}px ${i % 3 === 0 ? '#FF00FF' : i % 3 === 1 ? '#00FF00' : '#FF0000'}`,
+            boxShadow: window?.innerWidth < 768 ? 'none' : `0 0 ${10 + Math.random() * 20}px ${i % 3 === 0 ? '#FF00FF' : i % 3 === 1 ? '#00FF00' : '#FF0000'}`,
             filter: 'blur(1px)',
             transform: 'translateZ(0)',
             willChange: 'transform'
@@ -107,8 +107,8 @@ const BackgroundChaos = () => {
         />
       ))}
 
-      {/* Diagonal chaos elements with glitch shadow */}
-      {[...Array(10)].map((_, i) => (
+      {/* Diagonal chaos elements - reduced for mobile */}
+      {[...Array(window?.innerWidth < 768 ? 3 : 10)].map((_, i) => (
         <div
           key={`d-${i}`}
           className="fixed animate-chaos"
@@ -119,15 +119,15 @@ const BackgroundChaos = () => {
             height: '3px',
             background: i % 2 ? '#FF00FF' : '#00FF00',
             transform: `translateZ(0) rotate(${Math.random() * 360}deg)`,
-            boxShadow: `0 0 ${15 + Math.random() * 25}px ${i % 2 ? '#FF00FF' : '#00FF00'}`,
+            boxShadow: window?.innerWidth < 768 ? 'none' : `0 0 ${15 + Math.random() * 25}px ${i % 2 ? '#FF00FF' : '#00FF00'}`,
             filter: 'blur(0.5px)',
             willChange: 'transform'
           }}
         />
       ))}
 
-      {/* Floating squares with glitch effect */}
-      {[...Array(8)].map((_, i) => (
+      {/* Floating squares - reduced for mobile */}
+      {[...Array(window?.innerWidth < 768 ? 3 : 8)].map((_, i) => (
         <div
           key={`s-${i}`}
           className="fixed animate-float"
@@ -140,15 +140,15 @@ const BackgroundChaos = () => {
             borderColor: i % 3 === 0 ? '#FF00FF' : i % 3 === 1 ? '#00FF00' : '#FF0000',
             transform: `translateZ(0) rotate(${Math.random() * 45}deg)`,
             animationDelay: `${i * 0.5}s`,
-            boxShadow: `0 0 ${20 + Math.random() * 30}px ${i % 3 === 0 ? '#FF00FF' : i % 3 === 1 ? '#00FF00' : '#FF0000'}`,
+            boxShadow: window?.innerWidth < 768 ? 'none' : `0 0 ${20 + Math.random() * 30}px ${i % 3 === 0 ? '#FF00FF' : i % 3 === 1 ? '#00FF00' : '#FF0000'}`,
             filter: 'blur(1px)',
             willChange: 'transform'
           }}
         />
       ))}
 
-      {/* Random glitch dots with enhanced glow */}
-      {[...Array(20)].map((_, i) => (
+      {/* Random glitch dots - reduced for mobile */}
+      {[...Array(window?.innerWidth < 768 ? 8 : 20)].map((_, i) => (
         <div
           key={`g-${i}`}
           className="fixed animate-glitch-fast"
@@ -158,7 +158,7 @@ const BackgroundChaos = () => {
             width: '4px',
             height: '4px',
             background: i % 2 ? '#FF00FF' : '#00FF00',
-            boxShadow: `0 0 ${15 + Math.random() * 20}px ${i % 2 ? '#FF00FF' : '#00FF00'}`,
+            boxShadow: window?.innerWidth < 768 ? 'none' : `0 0 ${15 + Math.random() * 20}px ${i % 2 ? '#FF00FF' : '#00FF00'}`,
             filter: 'blur(0.5px)',
             transform: 'translateZ(0)',
             willChange: 'transform'
@@ -212,9 +212,9 @@ export default function Home() {
               className={`block w-full p-4 sm:p-6 ${link.color} ${link.textColor} text-center font-black text-lg sm:text-xl tracking-widest border-2 sm:border-4 border-black animate-shadow-glitch transition-transform relative overflow-hidden hover:animate-none backdrop-blur-sm`}
               style={{
                 animationDelay: `${link.delay}s`,
-                animationDuration: '0.8s',
+                animationDuration: window?.innerWidth < 768 ? '1.2s' : '0.8s',
                 animationFillMode: 'both',
-                animationTimingFunction: 'steps(15, end)'
+                animationTimingFunction: window?.innerWidth < 768 ? 'steps(8, end)' : 'steps(15, end)'
               }}
               initial={{ x: -100, opacity: 0, rotate: link.rotate }}
               animate={{ x: 0, opacity: 1, rotate: link.rotate }}
@@ -242,23 +242,25 @@ export default function Home() {
                 style={{ 
                   clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
                   animationDelay: `${link.delay + 0.2}s`,
-                  filter: 'contrast(200%) brightness(150%) hue-rotate(45deg)',
+                  filter: window?.innerWidth < 768 ? 'contrast(150%) brightness(120%)' : 'contrast(200%) brightness(150%) hue-rotate(45deg)',
                   mixBlendMode: 'hard-light'
                 }}
               />
-              <div 
-                className={`absolute inset-0 animate-glitch-slow mix-blend-overlay`}
-                style={{ 
-                  background: `repeating-linear-gradient(
-                    ${Math.random() * 360}deg,
-                    ${link.color} 0%,
-                    transparent 2px,
-                    ${link.color} 4px
-                  )`,
-                  opacity: 0.1,
-                  animationDelay: `${link.delay + 0.1}s`
-                }}
-              />
+              {window?.innerWidth >= 768 && (
+                <div 
+                  className={`absolute inset-0 animate-glitch-slow mix-blend-overlay`}
+                  style={{ 
+                    background: `repeating-linear-gradient(
+                      ${Math.random() * 360}deg,
+                      ${link.color} 0%,
+                      transparent 2px,
+                      ${link.color} 4px
+                    )`,
+                    opacity: 0.1,
+                    animationDelay: `${link.delay + 0.1}s`
+                  }}
+                />
+              )}
             </motion.a>
           ))}
         </div>
